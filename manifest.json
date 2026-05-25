@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json.schemastore.org/chrome-manifest",
+  "manifest_version": 3,
+
+  "name": "IGGYHUB Outfit Sync™",
+
+  "version": "1.0.0",
+
+  "description": "Assign an outfit to your favorite game and auto switch to them anytime you join them.",
+
+  "background": {
+    "service_worker": "./background.js",
+    "type": "module"
+  },
+
+  "permissions": [
+    "storage",
+    "tabs",
+    "unlimitedStorage",
+    "scripting",
+    "activeTab",
+    "alarms"
+  ],
+
+  "host_permissions": ["https://*.roblox.com/*"],
+  "web_accessible_resources": [
+    {
+      "matches": ["https://www.roblox.com/*"],
+      "resources": [
+        "Public/*",
+        "./Public/assignIcon.png",
+        "./Pages/index.html",
+        "./Utils.js",
+        "Pages/CSS/page.css"
+      ]
+    }
+  ],
+  "action": {
+    "default_title": "Open dashboard"
+  }
+}

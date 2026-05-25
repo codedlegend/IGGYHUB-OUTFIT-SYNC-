@@ -1,0 +1,29 @@
+
+.iggy-flex {
+  display: flex;
+}
+.iggy-flex-center {
+  justify-content: center !important;
+  align-items: center !important;
+}
+.iggy-flex-column {
+  flex-direction: column;
+}
+.iggy-flex-row {
+  flex-direction: row;
+}
+.iggy-space-between {
+  justify-content: space-between;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.m-10{
+    margin: 10px;
+}
+.m-20{
+    margin: 20px;
+}
+.p-relative{
+  position: relative;
+}

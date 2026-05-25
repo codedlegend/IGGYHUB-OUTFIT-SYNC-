@@ -1,0 +1,9 @@
+{
+  "auth_URL": "https://users.roblox.com/v1/users/authenticated",
+  "pro_id": "1839924907",
+  "pro_api": "https://inventory.roblox.com/v1/users/{userId}/items/GamePass/1839924907",
+  "presence_api": "https://presence.roblox.com/v1/presence/users",
+  "game_info_api": "https://games.roblox.com/v1/games?universeIds={universeId}",
+  "game_name_fetch_api": "https://games.roblox.com/v1/games/search?keyword={gameName}&maxRows=10",
+  "game_thumbnail_512x512_api": "https://thumbnails.roblox.com/v1/games/icons?universeIds={universeId}&size=512x512&format=Png&isCircular=false"
+}

@@ -1,0 +1,248 @@
+:root {
+  --charcoal: #2b2b2b;
+  --charcoal-light: #3a3a3a;
+  --charcoal-mid: #4a4a4a;
+  --yellow: #f5c400;
+  --yellow-dim: #c49b00;
+  --white: #f2f0eb;
+  --white-dim: #c8c6c0;
+  --robux: #00b06f;
+  --robux-dim: #008f58;
+  --robux-bg: rgba(0, 176, 111, 0.1);
+  --elite: #c084fc;
+  --elite-bg: rgba(192, 132, 252, 0.1);
+}
+
+body {
+  box-sizing: border-box;
+  background-color: var(--charcoal);
+  font-family: "Barlow Condensed", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+.b-c-robux {
+  background-color: var(--robux);
+}
+.b-c-robux-dim {
+  background-color: var(--robux-dim);
+}
+.c-robux-dim {
+  color: var(--robux-dim);
+}
+.c-robux {
+  color: var(--robux);
+}
+.b-c-robux-bg {
+  background-color: var(--robux-bg);
+}
+.b-robux {
+  border: 1px solid var(--robux);
+}
+.b-c-charcoal-light {
+  background-color: var(--charcoal-light);
+}
+.no-list-style {
+  list-style: none;
+}
+.flex {
+  display: flex;
+}
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-space-between {
+  justify-content: space-between;
+}
+.flex-align-items-center {
+  align-items: center;
+}
+.flex-align-items-start {
+  align-items: flex-start;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.m-10 {
+  margin: 10px;
+}
+.m-20 {
+  margin: 20px;
+}
+.p-relative {
+  position: relative;
+}
+.full-width {
+  width: 100%;
+}
+.b-c-yellow {
+  background-color: var(--yellow);
+}
+.p-fixed {
+  position: fixed;
+}
+.p-fixed-top {
+  top: 0;
+}
+.p-fixed-left {
+  left: 0;
+}
+.h3 {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.b-c-charcoal {
+  background-color: var(--charcoal);
+}
+.w-auto {
+  width: auto;
+}
+.c-charcoal {
+  color: var(--charcoal);
+}
+.text-align-center {
+  text-align: center;
+}
+.c-white {
+  color: white;
+}
+.section-style-1 {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+.c-yellow {
+  color: var(--yellow);
+}
+.fw-600 {
+  font-weight: 600;
+}
+.fs-1rem {
+  font-size: 1rem;
+}
+.rotate-90deg {
+  transform: rotateZ(-90deg);
+}
+section {
+  width: 100%;
+  min-height: calc(8 * 25px);
+}
+.section-header-class {
+  border-bottom: 1px solid var(--charcoal-light);
+  padding: 8px;
+}
+.ov-hidden {
+  overflow: hidden;
+}
+.m-0 {
+  margin: 0;
+}
+.mini-text {
+  font-size: 0.7rem;
+}
+.b-charcoal-light {
+  border: 1px solid var(--charcoal-light);
+}
+.c-charcoal-light {
+  color: var(--charcoal-light);
+}
+.flex-space-evenly {
+  justify-content: space-evenly;
+}
+.hover-b-c-yellow-dim:hover {
+  background-color: var(--yellow-dim);
+}
+.no-border {
+  border: none;
+}
+.no-focus-border:focus {
+  border: none;
+}
+.no-focus-outline:focus {
+  outline: none;
+}
+.button-auto-40y {
+  width: auto;
+  height: 40px;
+}
+.base-height-240 {
+  height: 240px;
+}
+.base-height-320 {
+  height: 320px;
+}
+.b-dash {
+  border-style: dashed;
+}
+.b-charcoal-light {
+  border-color: var(--charcoal-light);
+}
+.b-c-transparent {
+  background: transparent;
+}
+.focus-b-yellow:focus {
+  border-color: var(--yellow);
+  outline: var(--yellow);
+}
+.h-auto {
+  height: auto;
+}
+/*--ID--*/
+#nav-container {
+  height: 7%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  z-index: 100101101;
+}
+#support-logo {
+  width: auto;
+  height: max-content;
+  text-align: center;
+  padding: 4px;
+  color: var(--yellow);
+}
+#content {
+  min-height: 100vh;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  position: relative;
+  top: 10%;
+  left: 0;
+  padding-top: 80px;
+}
+#activeGameDiv {
+  width: 100%;
+  height: calc(8 * 8px);
+  background-color: var(--yellow);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px;
+}
+#proCTADiv {
+  height: calc(8 * 12px);
+  padding: 8px;
+  background-color: var(--charcoal);
+  padding: 16px;
+}

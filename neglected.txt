@@ -1,0 +1,7 @@
+ "content_scripts": [
+    {
+      "matches": ["https://www.roblox.com/games/*"],
+      "js": ["content/listener.js"],
+      "run_at": "document_start"
+    }
+  ]

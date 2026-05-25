@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iggyhub Outfit Sync - Dashboard</title>
+    <link rel="stylesheet" href="./CSS/page.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow+Condensed:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav
+      class="full-width b-c-yellow p-fixed p-fixed-top p-10"
+      id="nav-container"
+    >
+      <span class="flex flex-row w-auto h-100 g-8 flex-align-items-center p-8"
+        ><h1 class="c-charcoal">IGGYHUB</h1>
+        <span class="h3 b-c-charcoal" id="support-logo">OUTFIT SYNC</span></span
+      >
+
+      <div
+        class="flex flex-row flex-align-items-center w-20 flex-space-between p-8 g-16"
+      >
+        <span
+          id="amountLeftNavSpan"
+          class="b-c-charcoal p-8 text-align-center c-white w-50"
+        >
+          PRO · 0/INF RULES
+        </span>
+        <h5 id="robloxStatusSpan" class="w-50"> loading... </h5>
+      </div>
+    </nav>
+
+    <div id="content">
+      <section id="activeGameSection" class="section-style-1">
+        <div class="section-header-class w-100">
+          <span class="c-yellow fw-600 fs-1rem">//CURRENT SESSION</span>
+        </div>
+        <div id="activeGameDiv" class="text-align-center ov-hidden">
+          <h2 class="fw-600 c-charcoal rotate-90deg w-10 h-100 m-0">//Live</h2>
+          <div
+            class="b-c-charcoal w-90 h-100 m-0 flex flex-row flex-space-between p-8 flex-align-items-center"
+          >
+            <div
+              class="w-50 h-100 flex flex-column g-8 flex-align-items-start m-0"
+            >
+              <h2 id="currentGame" class="c-white">__Current_Game_Name__</h2>
+              <ul class="flex flex-row g-16 flex-align-items-start">
+                <li id="currentGameID" class="mini-text no-list-style flex flex-row g-4">
+                  <span class="c-white">ID: </span
+                  ><span class="c-yellow"> 000000000</span>
+                </li>
+                <li id="currentPlayerCount" class="mini-text no-list-style flex flex-row g-4">
+                  <span class="c-white">Players: </span
+                  ><span class="c-yellow">00</span>
+                </li>
+                <li id="currentGameGenre" class="mini-text no-list-style flex flex-row g-4">
+                  <span class="c-white">Genre: </span>
+                  <span class="c-yellow">None</span>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="flex flex-row g-8 flex-align-items-center p-8 w-auto height-15 b-c-robux-bg b-robux"
+              id="currentOutfitDiv"
+            >
+              <span class="play-icon">⏭️</span>
+              <span id="currentOutfitValue" class="c-robux fw-600">
+                __Current_Outfit__
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-100 b-charcoal-light" id="proCTADiv">
+          <div
+            class="w-100 h-100 flex flex-column flex-align-items-start flex-space-evenly"
+          >
+            <div class="flex w-100 flex-space-between">
+              <span class="mini-text c-white">Rules Used - Alpha</span>
+              <span class="mini-text c-white" id="currentInvProgress"
+                >00/∞</span
+              >
+            </div>
+
+            <div
+              class="w-100 ov-hidden flex flex-align-items-start h-20 b-c-charcoal-light"
+              data-element-type="progressBar"
+              data-progress="0"
+              data-represent="rulesNo"
+            >
+              <div class="b-c-robux h-110" --data-element-type="progress"></div>
+            </div>
+            <span class="mini-text c-charcoal-light"
+              >NO LIMIT - UNLIMITED RULES
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section id="activeRulesSection" class="section-style-1">
+        <div class="section-header-class w-100">
+          <span class="c-yellow fw-600 fs-1rem">//ACTIVE RULES</span>
+        </div>
+        <div class="flex flex-column g-16 flex-center w-100">
+          <div
+            id="emptyActiveRulesContainer"
+            class="flex flex-column flex-center g-8"
+          >
+            <span class="info-text c-white">NO ACTIVE RULES</span>
+            <a href="#assignGameSection"
+              ><button
+                class="button-auto-40y b-c-yellow br-0 p-8 hover-b-c-yellow-dim cursor-pointer no-border"
+              >
+                ASSIGN AN OUTFIT
+              </button></a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="assignGameSection" class="section-style-1">
+        <div class="section-header-class w-100">
+          <span class="c-yellow fw-600 fs-1rem">//ASSIGN A RULE</span>
+        </div>
+        <div
+          class="w-100 base-height-320 b-dash b-charcoal-light p-8 flex flex-column g-16"
+        >
+          <div class="w-100 flex flex-direction-row g-8 h-20">
+            <input
+              type="text"
+              name="game-name-search"
+              id="game-name-search"
+              placeholder="Game ID/Name"
+              class="w-80 h-100 b-c-transparent b-charcoal-light p-4 focus-b-yellow c-white"
+            />
+            <button
+              id="searchGameButton"
+              class="w-20 h-100 b-c-yellow no-border p-8 flex flex-center hover-b-c-yellow-dim"
+            >
+              Search
+            </button>
+          </div>
+          <div
+            id="game-info-container"
+            class="w-100 h-80 b-charcoal-light p-8 flex flex-row flex-space-between"
+          >
+            <img
+              src=""
+              alt="Game_Thumbnail"
+              id="selectedGameImg"
+              class="w-20 h-auto"
+            />
+            <div class="w-60 h-100 flex flex-column flex-align-start g-16">
+              <h1 id="selected-game-name" class="c-white">__Game_Name__</h1>
+              <div class="w-auto h-auto flex flex-row g-16 flex-align-center">
+                <!--GAME INFO INNER START-->
+                <span class="flex flex-column g-8 flex-align-center">
+                  <span class="info-text c-white">GAME ID</span>
+                  <h5 id="selected-game-id" class="c-white">__ID__</h5>
+                </span>
+
+                <span class="flex flex-column g-8 flex-align-center">
+                  <span class="info-text c-white">CREATOR</span>
+                  <h5 id="selected-game-id" class="c-white">__GAME_CREATOR__</h5>
+                </span>
+
+                <span class="flex flex-column g-8 flex-align-center">
+                  <span class="info-text c-white">PLAYERS</span>
+                  <h5 id="selected-game-id" class="c-white">__PLAYERS__</h5>
+                </span>
+
+                <span class="flex flex-column g-8 flex-align-center">
+                  <span class="info-text c-white">RATING</span>
+                  <h5 id="selected-game-id" class="c-white">__GAME_RATING__</h5>
+                </span>
+                <!--GAME INFO INNER END-->
+              </div>
+              <div
+                class="w-auto h-20 flex flex-row g-8 flex-align-center"
+                id="game-tags"
+              >
+                <span
+                  class="b-c-yellow no-border p-8 flex flex-center hover-b-c-yellow-dim h-10"
+                  >__GAME_TAG__</span
+                >
+              </div>
+
+              <select
+                name="outfit-select"
+                id="outfit-select"
+                class="w-100 h-16 p-8 b-c-charcoal-light c-white no-border no-focus-border no-focus-outline"
+              >
+                <option value="none" selected disabled>Select An Outfit</option>
+              </select>
+            </div>
+            <!--ASSIGN OUTFIT ACTION BUTTON MARKER START-->
+            <div class="flex flex-center w-20 h-100">
+              <button
+                id="assign-outfit"
+                class="w-100 h-30 b-c-yellow no-border p-8 flex flex-center hover-b-c-yellow-dim"
+              >
+                Save
+              </button>
+            </div>
+            <!--ASSIGN OUTFIT ACTION BUTTON MARKER START-->
+          </div>
+        </div>
+      </section>
+
+      <section id="footer" class="section-style-1">
+        <div class="w-100 flex flex-space-between flex-align-start">
+          <span id="extVersion" class="mini-text c-charcoal-light">
+            IOS-v-1.0.0 Alpha
+          </span>
+        </div>
+      </section>
+    </div>
+
+    <script src="./JS/page.js" type="module"></script>
+  </body>
+</html>
