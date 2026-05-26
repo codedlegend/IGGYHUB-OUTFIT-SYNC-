@@ -5,7 +5,14 @@ console.log(
 );
 
 import obj from "./config.json" with { type: "json" };
-import { S, P, saveDataToLocal, getFromStorage,saveToSession } from "./Utils.js";
+import {
+  S,
+  P,
+  saveDataToLocal,
+  getFromStorage,
+  saveToSession,
+  replaceTextWith,
+} from "./Utils.js";
 
 let Rr = 0;
 const $p = obj.pro_id;
@@ -79,11 +86,9 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
           // console.log("Saved in session storage");
         });
         sendResponse({ status: "success" });
-        return;
       }
       openExtensionDBP();
       sendResponse({ status: "success" });
-      return;
     } catch (e) {
       sendResponse({ status: "failed", reason: e });
     }
@@ -98,34 +103,60 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
   }
   if (message.action === "getCurrentPlayerSession") {
     try {
-      const cacheCGame = await getFromStorage("session", "currentGameCache");
+      const f$ = await fetch(obj.presence_api, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-      if (!cacheCGame) {
-        const f$ = await fetch(obj.presence_api, {
-          method: "POST",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          body: JSON.stringify({ userIds: [gID] }),
+        body: JSON.stringify({ userIds: [gID] }),
+      });
+      if (!f$.ok) {
+        sendResponse({
+          status: "failed",
+          reason: `"API ${obj.presence_api} failed"`,
         });
-        if (!f$.ok) {
-          sendResponse({
-            status: "failed",
-            reason: `"API ${obj.presence_api} failed"`,
-          });
-          return;
-        }
-        const f$js = await f$.json();
-        if (f$js) {
-          console.log(f$js);
-          
-          sendResponse({ status: "success", data: f$js, method: "fetch" });
-          return;
-        }
       }
-      sendResponse({ status: "success", method: "cache", data: cacheCGame });
+      const f$js = await f$.json();
+      if (f$js) {
+        //console.log(f$js);
+        sendResponse({ status: "success", data: f$js, method: "fetch" });
+      }
+    } catch (e) {
+      sendResponse({ status: "error", reason: e });
+    }
+  }
+  if (message.action === "getCurrentGameInfo") {
+    try {
+      if (!message.data || message.data.length == 0) {
+        sendResponse({ status: "failed", reason: "Expected game ID" });
+      }
+      //console.log(message.data);
+      const tUrl = replaceTextWith(
+        obj.game_info_api,
+        "{universeId}",
+        message.data?.universeId,
+      );
+      const gDataReq = await fetch(tUrl, {
+        method: "GET",
+        credentials: "include",
+      });
+      if (!gDataReq.ok) {
+        sendResponse({
+          status: "failed",
+          reason: `Request to resource: ${tUrl} failed `,
+        });
+      }
+      const gDataJson = await gDataReq.json();
+      if (!gDataJson) {
+        sendResponse({
+          status: "failed",
+          reason: `Conversion to Json failed`,
+        });
+      }
+      //console.log(gDataJson);
+      sendResponse({ status: "success", data: gDataJson });
     } catch (e) {
       sendResponse({ status: "error", reason: e });
     }

@@ -17,7 +17,9 @@ export function saveDataToLocal(k, obj) {
     console.error("Unexpected params");
   }
 }
-
+export function replaceTextWith(text = "", target = "", replacement = "") {
+  return text.replaceAll(target, replacement);
+}
 export async function getFromStorage(storageType = "local", key = "") {
   return new Promise((resolve, reject) => {
     try {

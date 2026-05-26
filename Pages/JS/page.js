@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
   updateExtensionVer();
 });
 
-async function sendMessage(action = "") {
+async function sendMessage(action = "", data = {}) {
   return new Promise((resolve, reject) => {
     try {
-      chrome.runtime.sendMessage({ action }, (r) => {
+      chrome.runtime.sendMessage({ action, data }, (r) => {
         if (r) {
           resolve(r);
         } else {
@@ -30,6 +30,13 @@ async function GCGD() {
   try {
     const tCont = document.querySelector("#activeGameDiv");
     const currentGameCont = tCont.querySelector("#currentGame");
+    const currentGameID = tCont.querySelector("#currentGameID span:last-child");
+    const currentGameGenre = tCont.querySelector(
+      "#currentGameGenre span:last-child",
+    );
+    const currentPlayerCount = tCont.querySelector(
+      "#currentPlayerCount span:last-child",
+    );
 
     const c$backg$SW = await sendMessage("getCurrentPlayerSession");
 
@@ -44,11 +51,27 @@ async function GCGD() {
       }
       const c$backg$SWData = c$backg$SW.data;
       //console.log(c$backg$SWData.userPresences[0]);
-      const { lastLocation, universeId, userPresenceType, gameId } =
+      const { lastLocation, universeId, userPresenceType, rootPlaceId } =
         c$backg$SWData.userPresences[0];
-      console.log(lastLocation, universeId, gameId, userPresenceType);
+      console.log(lastLocation, universeId, rootPlaceId, userPresenceType);
 
       currentGameCont.textContent = lastLocation;
+      currentGameID.textContent = rootPlaceId;
+
+      const getGameInfo = await sendMessage("getCurrentGameInfo", {
+        universeId,
+      });
+      if (!getGameInfo || getGameInfo.status != "success") {
+        console.error("Failed to get game info: ", getGameInfo.reason);
+        return;
+      }
+      //console.log(getGameInfo.data.data[0]);
+      const { playing, genre } = getGameInfo.data.data[0];
+
+      currentPlayerCount.textContent = playing;
+      currentGameGenre.textContent = genre;
+
+      window.currentGameData = getGameInfo.data.data[0];
     }
   } catch (e) {
     throw new Error(e);
